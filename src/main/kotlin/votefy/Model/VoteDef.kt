@@ -2,11 +2,11 @@ package votefy.model
 
 import java.util.Date
 
-data class Question(
+data class VoteDef(
     val id: String,
     val title: String,
     val options: List<String>?,
-    val eligibleVoters: List<String>?,
-    val cratedAt: Date,
+    val createdAt: Date,
     val isActive: Boolean,
 )
+
