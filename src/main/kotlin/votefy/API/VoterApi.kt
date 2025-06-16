@@ -1,17 +1,13 @@
 package votefy.api
-import com.google.gson.reflect.TypeToken
-import java.lang.reflect.Type
-import votefy.model.VoteDef
-import votefy.model.VoteSubmission
+import votefy.services.VoterService
+import votefy.model.Poll
+import votefy.model.UserVote
 
-class VoterApi(private val baseUrl: String) {
-    suspend fun vote(submission: VoteSubmission): Boolean =
-        HttpHelper.postJson("$baseUrl/votes", submission)
+class VoterApi(private val service: VoterService) {
 
-    suspend fun checkForOpenVote(userId: String): List<VoteDef> {
-        val type: Type = object : TypeToken<List<VoteDef>>() {}.type
-        return HttpHelper.getJson("$baseUrl/votes/$userId/openVotesForUser", type) ?: emptyList()
-    }
+    suspend fun vote(submission: UserVote): Boolean =
+        service.vote(submission).isSuccessful
 
-
+    suspend fun checkForOpenVote(userID: String): List<Poll> =
+        service.getOpenVotes(userID).body() ?: emptyList()
 }
