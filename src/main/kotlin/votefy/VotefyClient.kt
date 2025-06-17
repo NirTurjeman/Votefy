@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class VotefyClient() {
-    private val baseUrl = "https://f543-79-177-145-225.ngrok-free.app/votes/"
+    private val baseUrl = "https://cd2f-2a00-a041-e94b-1700-a8a5-1fac-a041-6e24.ngrok-free.app/votes/"
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
