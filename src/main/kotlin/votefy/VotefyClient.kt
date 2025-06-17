@@ -7,7 +7,7 @@ import votefy.services.VoterService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class VotefyClient(baseUrl: String = "") {
+class VotefyClient(baseUrl: String) {
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl.ensureEndsWithSlash())
         .addConverterFactory(GsonConverterFactory.create())
